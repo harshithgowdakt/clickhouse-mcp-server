@@ -95,7 +95,10 @@ Or, if you'd like to try it out with the [ClickHouse SQL Playground](https://sql
 }
 ```
 
-**Important**: Update the path in the config to point to your actual `dist/index.js` file location.
+**Important**: Update the path in the config to point to your actual `dist/index.js` file location. Copy the full path using as shown in the image below.
+
+![index.js path](image-1.png)
+
 
 ### 6. Test the Server
 
