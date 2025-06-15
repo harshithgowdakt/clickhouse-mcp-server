@@ -6,6 +6,21 @@
 2. **ClickHouse** database running locally or remotely
 3. **Claude Desktop** application installed
 
+### Tools
+
+* `clickhouse_query`
+  * Execute SQL queries on your ClickHouse cluster.
+  * Input: `sql` (string): The SQL query to execute.
+
+* `clickhouse_show_tables`
+  * List all tables in the ClickHouse database.
+  * Input: None.
+
+* `clickhouse_describe_table`
+  * Describe a table in the ClickHouse database.
+  * Input: `table` (string): The name of the table to describe.
+
+
 ## Installation Steps
 
 ### 1. Install Dependencies
@@ -26,24 +41,73 @@ chmod +x dist/index.js
 
 ### 4. Configure Claude Desktop
 
-#### On macOS:
-Edit `~/Library/Application Support/Claude/claude_desktop_config.json`
+1. Open the Claude Desktop configuration file located at:
+   * On macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+   * On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
 
-#### On Windows:
-Edit `%APPDATA%\Claude\claude_desktop_config.json`
+2. Add the following:
 
-Add the ClickHouse server configuration to your existing config or create a new one with the provided JSON.
+```json
+{
+  "mcpServers": {
+    "mcp-clickhouse": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with",
+        "mcp-clickhouse",
+        "--python",
+        "3.13",
+        "mcp-clickhouse"
+      ],
+      "env": {
+        "CLICKHOUSE_HOST": "<clickhouse-host>",
+        "CLICKHOUSE_PORT": "<clickhouse-port>",
+        "CLICKHOUSE_USER": "<clickhouse-user>",
+        "CLICKHOUSE_PASSWORD": "<clickhouse-password>",
+        "CLICKHOUSE_SECURE": "true",
+        "CLICKHOUSE_VERIFY": "true",
+        "CLICKHOUSE_CONNECT_TIMEOUT": "30",
+        "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "30"
+      }
+    }
+  }
+}
+```
 
-**Important**: Update the path in the config to point to your actual `index.js` file location.
+Update the environment variables to point to your own ClickHouse service.
 
-### 5. Environment Variables
+Or, if you'd like to try it out with the [ClickHouse SQL Playground](https://sql.clickhouse.com/), you can use the following config:
 
-Set your ClickHouse connection details through environment variables or update them directly in the Claude Desktop config:
+```json
+{
+  "mcpServers": {
+    "mcp-clickhouse": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with",
+        "mcp-clickhouse",
+        "--python",
+        "3.13",
+        "mcp-clickhouse"
+      ],
+      "env": {
+        "CLICKHOUSE_HOST": "sql-clickhouse.clickhouse.com",
+        "CLICKHOUSE_PORT": "8443",
+        "CLICKHOUSE_USER": "demo",
+        "CLICKHOUSE_PASSWORD": "",
+        "CLICKHOUSE_SECURE": "true",
+        "CLICKHOUSE_VERIFY": "true",
+        "CLICKHOUSE_CONNECT_TIMEOUT": "30",
+        "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "30"
+      }
+    }
+  }
+}
+```
 
-- `CLICKHOUSE_HOST`: Your ClickHouse server URL (default: http://localhost:8123)
-- `CLICKHOUSE_USERNAME`: Username (default: default)
-- `CLICKHOUSE_PASSWORD`: Password (default: empty)
-- `CLICKHOUSE_DATABASE`: Database name (default: default)
+**Important**: Update the path in the config to point to your actual `dist/index.js` file location.
 
 ### 6. Test the Server
 
