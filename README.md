@@ -40,12 +40,14 @@ chmod +x dist/index.js
 ```
 
 ### 4. Configure Claude Desktop
+1. Open the Claude Desktop application, go to settings, then Developer and then click on "Edit Configuration File"
+![Claude Desktop Settings](image.png)
 
-1. Open the Claude Desktop configuration file located at:
+2. OR Open the Claude Desktop configuration file located at:
    * On macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
    * On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
 
-2. Add the following:
+3. Add the following:
 
 ```json
 {
