@@ -1,0 +1,25 @@
+{
+  "name": "clickhouse-mcp-server",
+  "version": "1.0.0",
+  "description": "click house mcp server example",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MCP",
+    "clickhouse",
+    "LLM"
+  ],
+  "author": "harshithgowdakt@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@clickhouse/client": "^1.11.2",
+    "@modelcontextprotocol/sdk": "^1.12.3",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.1"
+  }
+}

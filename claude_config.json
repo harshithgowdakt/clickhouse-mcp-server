@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "clickhouse": {
+      "command": "node",
+      "args": ["/path/to/your/clickhouse-mcp-server/dist/index.js"],
+      "env": {
+        "CLICKHOUSE_HOST": "provide host url",
+        "CLICKHOUSE_USERNAME": "provide username",
+        "CLICKHOUSE_PASSWORD": "provide password",
+        "CLICKHOUSE_DATABASE": "provide database name"
+      }
+    }
+  }
+}
