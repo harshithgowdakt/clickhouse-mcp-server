@@ -15,7 +15,7 @@ npm install @modelcontextprotocol/sdk @clickhouse/client typescript @types/node
 
 ### 2. Build the TypeScript
 ```bash
-npx tsc
+npm run build
 ```
 
 ### 3. Create the Server File
