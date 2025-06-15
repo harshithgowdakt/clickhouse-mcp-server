@@ -13,13 +13,18 @@
 npm install @modelcontextprotocol/sdk @clickhouse/client typescript @types/node
 ```
 
-### 2. Create the Server File
+### 2. Build the TypeScript
+```bash
+npx tsc
+```
+
+### 3. Create the Server File
 Copy the main server code into `index.js` and make it executable:
 ```bash
 chmod +x dist/index.js
 ```
 
-### 3. Configure Claude Desktop
+### 4. Configure Claude Desktop
 
 #### On macOS:
 Edit `~/Library/Application Support/Claude/claude_desktop_config.json`
@@ -31,7 +36,7 @@ Add the ClickHouse server configuration to your existing config or create a new 
 
 **Important**: Update the path in the config to point to your actual `index.js` file location.
 
-### 6. Environment Variables
+### 5. Environment Variables
 
 Set your ClickHouse connection details through environment variables or update them directly in the Claude Desktop config:
 
@@ -40,7 +45,7 @@ Set your ClickHouse connection details through environment variables or update t
 - `CLICKHOUSE_PASSWORD`: Password (default: empty)
 - `CLICKHOUSE_DATABASE`: Database name (default: default)
 
-### 7. Test the Server
+### 6. Test the Server
 
 Before configuring Claude Desktop, test the server locally:
 ```bash
@@ -49,7 +54,7 @@ node dist/index.js
 
 The server should start and display "ClickHouse MCP server running on stdio".
 
-### 8. Restart Claude Desktop
+### 7. Restart Claude Desktop
 
 After updating the configuration, restart Claude Desktop for the changes to take effect.
 
