@@ -50,16 +50,9 @@ chmod +x dist/index.js
 ```json
 {
   "mcpServers": {
-    "mcp-clickhouse": {
-      "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "mcp-clickhouse",
-        "--python",
-        "3.13",
-        "mcp-clickhouse"
-      ],
+    "clickhouse": {
+      "command": "node",
+      "args": ["/path/to/your/clickhouse-mcp-server/dist/index.js"],
       "env": {
         "CLICKHOUSE_HOST": "<clickhouse-host>",
         "CLICKHOUSE_PORT": "<clickhouse-port>",
@@ -82,16 +75,9 @@ Or, if you'd like to try it out with the [ClickHouse SQL Playground](https://sql
 ```json
 {
   "mcpServers": {
-    "mcp-clickhouse": {
-      "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "mcp-clickhouse",
-        "--python",
-        "3.13",
-        "mcp-clickhouse"
-      ],
+    "clickhouse": {
+      "command": "node",
+      "args": ["/path/to/your/clickhouse-mcp-server/dist/index.js"],
       "env": {
         "CLICKHOUSE_HOST": "sql-clickhouse.clickhouse.com",
         "CLICKHOUSE_PORT": "8443",
