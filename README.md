@@ -1,4 +1,6 @@
-# ClickHouse MCP Server Setup Guide
+# ClickHouse MCP Server
+
+A Model Context Protocol (MCP) server implementation that enables Claude AI to interact with ClickHouse databases through a secure and efficient interface.
 
 ## Prerequisites
 
@@ -6,19 +8,20 @@
 2. **ClickHouse** database running locally or remotely
 3. **Claude Desktop** application installed
 
-### Tools
+### Available Tools
 
-* `clickhouse_query`
-  * Execute SQL queries on your ClickHouse cluster.
-  * Input: `sql` (string): The SQL query to execute.
+1. **clickhouse_query**
+   - Execute SELECT queries on your ClickHouse cluster
+   - Input: `sql` (string): The SQL query to execute
+   - Note: Only SELECT queries are allowed for security reasons
 
-* `clickhouse_show_tables`
-  * List all tables in the ClickHouse database.
-  * Input: None.
+2. **clickhouse_show_tables**
+   - List all tables in the ClickHouse database
+   - No input parameters required
 
-* `clickhouse_describe_table`
-  * Describe a table in the ClickHouse database.
-  * Input: `table` (string): The name of the table to describe.
+3. **clickhouse_describe_table**
+   - Describe the schema of a specific table
+   - Input: `table` (string): The name of the table to describe
 
 
 ## Installation Steps
@@ -100,7 +103,7 @@ Or, if you'd like to try it out with the [ClickHouse SQL Playground](https://sql
 ![index.js path](image-1.png)
 
 
-### 6. Test the Server
+### 5. Test the Server
 
 Before configuring Claude Desktop, test the server locally:
 ```bash
@@ -113,13 +116,46 @@ The server should start and display "ClickHouse MCP server running on stdio".
 
 After updating the configuration, restart Claude Desktop for the changes to take effect.
 
-## Available Tools
+## Example Usage
 
-Once configured, Claude will have access to these ClickHouse tools:
+After setup, you can ask Claude to:
+- "Show me all tables in the ClickHouse database"
+- "Query the user_events table for today's data"
+- "Describe the schema of the orders table"
 
-1. **clickhouse_query**: Execute SELECT queries
-3. **clickhouse_show_tables**: List all tables
-4. **clickhouse_describe_table**: Get table schema
+## Development
+
+### Running Tests
+```bash
+npm test
+```
+
+### Building the Project
+```bash
+npm run build
+```
+
+### Linting
+```bash
+npm run lint
+```
+
+## Security Notes
+- The server only allows SELECT queries for the query tool
+- Consider setting up proper authentication for your ClickHouse instance
+- Use environment variables for sensitive credentials
+- Restrict network access to your ClickHouse server as needed
+
+## Troubleshooting
+
+1. **Connection Issues**: Check your ClickHouse server is running and accessible
+2. **Permission Errors**: Ensure the Node.js script has proper file permissions
+3. **Config Issues**: Verify the path in Claude Desktop config points to the correct file
+4. **Dependencies**: Make sure all npm packages are properly installed
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Example Usage
 
